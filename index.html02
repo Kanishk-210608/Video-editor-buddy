@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor Buddy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.7/dist/umd/ffmpeg.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+</head>
+<body>
+    <script src="coi-serviceworker.js"></script>
+
+    <div class="app-container">
+        <header>
+            <h1>🎬 Video Editor Buddy</h1>
+            <p>Edit videos directly in your browser!</p>
+        </header>
+
+        <div class="upload-section">
+            <input type="file" id="video-upload" accept="video/*">
+            <label for="video-upload" class="btn-main">Choose Video</label>
+        </div>
+
+        <div class="preview-area">
+            <video id="preview-player" controls></video>
+        </div>
+
+        <div class="controls-grid">
+            <button onclick="process('trim')">✂️ Trim (First 5s)</button>
+            <button onclick="process('mute')">🔇 Remove Audio</button>
+            <button onclick="process('gray')">🌑 Make Black & White</button>
+            <button onclick="process('gif')">🖼️ Convert to GIF</button>
+        </div>
+
+        <div id="status-box">
+            <p id="message">Ready to go!</p>
+            <div class="progress-bar-bg">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+
+        <a id="download-link" class="btn-download" style="display:none;">Download Edited Video</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
